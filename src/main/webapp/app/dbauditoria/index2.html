@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app="app">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>DbAuditoria</title>
+
+    <link href="../../lib/bower/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link rel="stylesheet" type="text/css" href="../../lib/bower/bootstrap/dist/css/bootstrap.css" >
+    <!-- DataTables CSS -->
+    <link href="../../lib/bower/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="../../lib/bower/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../../lib/bower/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"> 
+   
+	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="css/ui.css">
+ 	<script src="lib/angular/angular.js"></script> 
+	<script src="lib/angular/angular-route.js"></script>
+	<script src="lib/angular/angular-messages.js"></script>
+	<script src="lib/serialGenerator/serialGenerator.js"></script>
+	<script src="lib/ui/ui.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/cidades/listCidadesCtrl.js"></script>
+        <script src="js/controllers/bairros/listBairrosCtrl.js"></script>
+	<script src="js/controllers/cidades/cadasCidadeCtrl.js"></script>
+        <script src="js/controllers/bairros/cadasBairroCtrl.js"></script>
+	<script src="js/controllers/cidades/editarCidCtrl.js"></script>
+	<script src="js/services/cidadesAPIService.js"></script>
+	<script src="js/services/bairrosAPIService.js"></script>
+	<script src="js/config/serialGeneratorConfig.js"></script>
+        <script src="js/config/routeConfig.js"></script>
+	<script src="js/value/configValue.js"></script>
+	<script src="js/filters/nameFilter.js"></script>
+	<script src="js/filters/ellipsisFilter.js"></script>
+	<script src="js/directives/uiAlertDirective.js"></script>
+	<script src="js/directives/uiDateDirective.js"></script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/">DbAudit v1.0</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#">Read All New Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            
+            
+            
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="#/"><i class="fa fa-home fa-fw glyphicon-home"></i> Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#/" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-gear"></i> Auditoria <b class="caret"></b></a>
+                       <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-file"></i> Nova Auditoria</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-search"></i> Consultar Auditoria</a>
+                        </li>                     
+                       </ul>
+                    </li>
+                     
+                                
+                    <li class="dropdown">
+                    <a href="#/" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-edit fa-fw"></i> Cadastro <b class="fa fa-fw fa-caret-down"></b></a>
+                    <ul class="dropdown-menu">
+                         <li>
+                        <a href="#cliente" ><i class="fa fa-edit fa-fw"></i>Clientes</a>
+                    </li>
+                    <li>
+                        <a href="#colaborador"><i class="fa fa-edit fa-fw"></i>Colaboradores</a>
+                    </li>
+                    <li>
+                        <a href="#certificadora"><i class="fa fa-edit fa-fw"></i>Certificadoras</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-edit fa-fw"></i>Enderecos</a>
+                    </li>
+                    <li>
+                        <a href="#cidades"><i class="fa fa-edit fa-fw"></i>Cidade</a>
+                    </li>
+                    <li>
+                        <a href="#auditor"><i class="fa fa-edit fa-fw"></i>Auditor</a>
+                    </li>
+                    <li>
+                        <a href="#naoConformidades"><i class="fa fa-edit fa-fw"></i>Não Conformidade</a>
+                    </li>
+                     <li>
+                        <a href="#equipeAuditor"><i class="fa fa-edit fa-fw"></i>Equipe Auditor</a>
+                    </li>
+                    <li>
+                        <a href="#bairros"><i class="fa fa-edit fa-fw"></i>Bairro</a>
+                    </li>
+                    </ul>
+                  </li>                    
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+         
+         <div id="page-wrapper">
+        
+         <div ng-view>  </div>
+         
+         </div>
+        
+        
+    </div>
+    
+    
+         
+
+    
+   
+    
+
+  
+                    
+ 
+
+    <!-- jQuery -->
+     <script src="../../lib/bower/jquery/dist/jquery.min.js"></script>
+     <!-- Bootstrap Core JavaScript -->
+     <script src="../../lib/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+
+     <!-- Metis Menu Plugin JavaScript -->
+     <script src="../../lib/bower/metisMenu/dist/metisMenu.min.js"></script>
+
+     <!-- DataTables JavaScript -->
+     <script src="../../lib/bower/datatables/media/js/jquery.dataTables.min.js"></script>
+     <script src="../../lib/bower/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+     <!-- Custom Theme JavaScript -->
+     <script src="../scripts/js/sb-admin-2.js"></script>
+     
+
+
+</body>
+
+</html>

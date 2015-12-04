@@ -1,0 +1,19 @@
+<html ng-app="data">
+<head>
+ <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular.min.js"></script>
+ <script>
+  
+  var appModule = angular.module('data', []);
+ 
+  function General($scope, $element, $http, $filter)
+  {
+   $scope.datahora  = $filter('date')(new Date(), 'yyyy-MM-dd HH:mm:ss');
+  }
+  
+ </script>
+</head>
+<body ng-controller="General">
+ <p>Data</p>
+ <span>{{datahora}}</span>
+</body>
+</html>

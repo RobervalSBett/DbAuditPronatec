@@ -1,0 +1,143 @@
+<div id="page-wrapper"><br>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4> cadastro de ceps </h4>   
+				</div><br>
+				<div class="container-fluid" style="alignment-adjust:central;">
+				<!--  < style="background-color: #dff0d8;">  -->
+
+					<!--formulario-->
+					<form name="cepForm"> 
+
+						<div class="row">      
+			          		<div class="col-lg-12">
+			            		<div class="panel panel-red">			              			
+				            		<div class="panel-body">
+				                		<div class="panel-collapse">              
+
+											<div class="col-lg-12">
+												<label>cep</label>
+												<input class="form-control" type="text" ng-model="cep.cep" name="cep" placeholder="CEP" 
+														ng-required="true" ng-minlength="8" ng-maxlength="9" ui-Cep/> 
+											</div></br>
+
+											<div name="cidade" class="col-lg-3">
+												<label>id cidade</label>
+												<select class="form-control" ng-model="cep.cidades" ng-options="cidade.idcid for cidade in cidades">
+													<option value="">id cidade</option>
+												</select>
+											</div><br>											
+
+											<div class="col-lg-9">
+												<label>cidade</label>			
+												<input class="form-control" type="text" ng-model="cep.cidades.descricid" disabled="" name="cidade" placeholder="Cidade" 
+														ng-required="true" ng-minlength="1" ng-maxlength="50" />
+											</div>			
+
+
+											<div name="cidade" class="col-lg-3">
+												<label>id bairro</label>
+												<select class="form-control" ng-model="cep.idbai" ng-options="bairro.idbai for bairro in bairros">
+													<option value="">id bairro</option>
+												</select>
+											</div><br>
+											
+											<div class="col-lg-9">
+												<label>bairro</label>
+												<input class="form-control" type="text" ng-model="cep.idbai.describai" disabled="" name="bairro"  placeholder="Bairro" 
+														ng-required="true" ng-minlength="1" ng-maxlength="50"/>
+											</div>
+
+											<div class="col-lg-12">
+												<label>logradouro</label>
+												<input class="form-control" type="text" ng-model="cep.logracep" name="lograCep" placeholder="Logradouro" 
+														ng-required="false" ng-minlength="1" ng-maxlength="60"/>
+											</div>
+											
+											<div class="col-lg-12">
+												<label>observação</label>
+												<textarea class="form-control" type="text" ng-model="cep.obscep" name="obsCep" placeholder="Observação" 
+														ng-required="true" ng-minlength="1" ng-maxlength="100"rows="3"></textarea><br>
+											</div>			
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</form>
+
+					<!--autent. campos-->
+					<div ng-show="cepForm.cep.$dirty" ng-messages="cepForm.cep.$error">
+						<div ng-message="required" class="alert alert-danger">
+							Por favor, preencha o campo CEP.
+						</div>
+						<div ng-message="minlength" class="alert alert-danger">
+							O campo CEP deve ter o formato 00000-000
+						</div>
+						<div ng-message="maxlength" class="alert alert-danger">
+							O campo CEP deve ter o formato 00000-000
+						</div>        
+					</div>  
+
+					<div ng-show="cepForm.idCid.$dirty" ng-messages="cepForm.idCid.$error">
+						<div ng-message="required" class="alert alert-danger">
+							Por favor, preencha o campo id da cidade.
+						</div>
+						<div ng-message="minlength" class="alert alert-danger">
+							O campo id da cidade deve ter no mínimo 1 caracteres.
+						</div>
+						<div ng-message="maxlength" class="alert alert-danger">
+							O campo id da cidade deve ter no máximo 1 caracteres.
+						</div>        
+					</div>  
+
+					<div ng-show="cepForm.idBai.$dirty" ng-messages="cepForm.idBai.$error">
+						<div ng-message="required" class="alert alert-danger">
+							Por favor, preencha o campo id bairro.
+						</div>
+						<div ng-message="minlength" class="alert alert-danger">
+							O campo id bairro deve ter no mínimo 1 caracteres.
+						</div>
+						<div ng-message="maxlength" class="alert alert-danger">
+							O campo id bairro deve ter no máximo 1 caracteres.
+						</div>        
+					</div>  
+
+					<div ng-show="cepForm.lograCep.$dirty" ng-messages="cepForm.lograCep.$error">
+						<div ng-message="required" class="alert alert-danger">
+							Por favor, preencha o campo logradouro.
+						</div>
+						<div ng-message="minlength" class="alert alert-danger">
+							O campo logradouro deve ter no mínimo 1 caracteres.
+						</div>
+						<div ng-message="maxlength" class="alert alert-danger">
+							O campo logradouro deve ter no máximo 60 caracteres.
+						</div>        
+					</div>  
+
+					<div ng-show="cepForm.obsCep.$dirty" ng-messages="cepForm.obsCep.$error">
+						<div ng-message="required" class="alert alert-danger">
+							Por favor, preencha o campo observação.
+						</div>
+						<div ng-message="minlength" class="alert alert-danger">
+							O campo observação deve ter no mínimo 1 caracteres.
+						</div>
+						<div ng-message="maxlength" class="alert alert-danger">
+							O campo observação deve ter no máximo 100 caracteres.
+						</div>        
+					</div> <br>
+
+					<!--botoes-->
+					<div style="padding-left:280px;"   >
+						<a class="btn btn-primary glyphicon glyphicon-floppy-save" ng-click="(cep.statuscep = 'A');adicionarCep(cep)" ng-disabled="cepForm.$invalid"> salvar</a>
+						<a href="#/ceps"  class="btn btn-danger glyphicon glyphicon-remove"> cancelar</a>
+					</div> 
+				</div><br><br>
+			</div><br>
+			<div ng-include="'footer.html'"></div>
+		</div>		
+	</div>
+</div> 

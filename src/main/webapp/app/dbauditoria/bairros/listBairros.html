@@ -1,0 +1,43 @@
+<div id="page-wrapper"><br>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>lista de bairros</h4>   
+                </div><br>
+                <div class="container-fluid">
+                    <div>
+                        <a class="btn btn-outline btn-success glyphicon glyphicon-plus" href="#/cadBairros"> novo</a>
+                    </div><br>    
+                    <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Pesquisar por bairro.."/>
+                        <div class="tab-content">
+                            <div class="tab-pane fade in active" id="home-pills">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        
+                                        <!--tabela -->                   
+                                        <table ng-show="bairros.length > 0" class="table table-striped table-bordered table-responsive table-hover">
+                                            <tr> 
+                                                <th><a href="" ng-click="ordenarPor('describai')">bairro <i class="fa fa-sort"></i></a></th>                    
+                                                <th><a href="" ng-click="ordenarPor('statusbai')">status <i class="fa fa-sort"></i></a></th>
+                                                <th style="text-align: center;">editar</th>
+                                                <th style="text-align: center;">excluir</th>
+                                            </tr>
+                                            <tr ng-class="{'selecionado negrito': bairro.selecionado}" ng-repeat="bairro in bairros | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+                                                <td>{{bairro.describai | uppercase}}</td>
+                                                <td>{{bairro.statusbai | uppercase}}</td>
+                                                <td style="text-align: center;"><a href="#/editBairros/{{bairro.idbai}}" class="btn btn-outline btn-warning btn-xs glyphicon glyphicon-edit"></a></td>
+                                                <td style="text-align: center;"><a class="btn btn-outline btn-danger  btn-xs glyphicon glyphicon-remove" ng-click="(bairro.statusbai = 'D');adicionarBairro(bairro)"></a></td>	
+                                            </tr>
+                                        </table>            
+
+                                    </div><br><br>       
+                                </div><!-- /.row --><br>
+                            </div>
+                        </div>                    
+                </div>
+            </div>
+            <div ng-include="'footer.html'"></div>       
+        </div><!-- /#page-wrapper -->
+    </div> <!-- /#wrapper -->
+</div>

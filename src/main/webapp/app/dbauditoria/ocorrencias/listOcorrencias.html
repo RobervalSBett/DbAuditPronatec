@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div class="modal fade" id="ModalOco" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document" style="width:1000px;" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">ocorrencias</h4>
+      </div>
+      <div class="modal-body">
+        
+        <div id="page-wrapper">     <br>
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="panel panel-info">
+                <div class="panel-heading">
+                  <h4>lista de ocorrencias</h4>   
+                </div>  <br>
+                <div class="container-fluid">
+                <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Pesquisar.."/>
+                  <div class="tab-content">
+                    <div class="tab-pane fade in active">
+                      <div class="panel-body">
+                        <div class=" table-responsives" style="text-align: center;">
+
+                          <!--tabela-->
+                          <table ng-show="ocorrencias.length > 0" class="table table-striped table-bordered table-hover" style="text-align: center;">
+                            <tr> 
+                              <td><b>ocorrencia</b></td>
+                              <td><b><a href="" ng-click="ordenarPor('idpontoctrl.idpontoctrl')">checkpoint <i class="fa fa-sort"></i></a></b></td>
+                              <td><b><a href="" ng-click="ordenarPor('descriocorre')">descrição <i class="fa fa-sort"></i></a></b></td>
+                              <td><b>colaboradores</b></td>
+                              <td><b>data ocorrecia</b></td>                     
+                              <td><b><a href="" ng-click="ordenarPor('statusocorre')">status<i class="fa fa-sort"></i></a></b></td>                
+                            </tr>
+                            <tr ng-class="{'selecionado negrito': ocorrencia.selecionado}" ng-repeat="ocorrencia in ocorrencias | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">           
+                              <td>{{ocorrencia.idocorre}}</td>  
+                              <td>{{ocorrencia.idpontoctrl.idpontoctrl}}</td>
+                              <td>{{ocorrencia.descriocorre | uppercase}}</td> 
+                              <td>{{ocorrencia.idcola.nomecola}}</td>
+                              <td>{{ocorrencia.dthrocorre  |  date:'dd/MM/yyyy HH:mm:ss'}}</td>  
+                              <td>{{ocorrencia.statusocorre | uppercase}}</td>                
+                            </tr>
+                          </table>
+                          
+                        </div><br>       
+                      </div><br> 
+                    </div>
+                  </div>                    
+                </div>
+              </div>
+              <div ng-include="'footer.html'"></div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">fechar</button>
+        <a class="btn btn-outline btn-success glyphicon glyphicon-plus" data-toggle="modal" data-target="#Modalcadcheck" > novo (a)</a>
+<!--    <button type="button" class="btn btn-primary">salvar</button> -->
+      </div>
+
+    </div>
+  </div>
+</div>

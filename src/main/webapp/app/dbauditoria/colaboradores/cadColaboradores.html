@@ -1,0 +1,98 @@
+<div id="page-wrapper"><br>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading"> <h4> cadastro de colaboradores </h4>  
+        </div> <br>
+        <div class="container-fluid" style="text-align: center;">
+          <form name="colaboradorForm">
+
+            <!--********* dados pessoais *********-->  
+            <div class="row">      
+              <div class="col-lg-12">
+                <div class="panel panel-red">
+                  <div class="panel-heading">
+                    dados  
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel-collapse">
+
+                      <div class="col-lg-12">
+                        <label>nome</label>  
+                        <input class="form-control" type="text" ng-model="colaborador.nomecola  " name="nomeCola" placeholder="Nome" ng-required="true" ng-minlength="3"/><p> 
+                      </div>                      
+                      <div ng-show="colaboradorForm.nomeCola.$dirty" ng-messages="colaboradorForm.nomeCola.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo nome.
+                        </div>
+                        <div ng-message="minlength" class="alert alert-danger">
+                          O campo nome deve ter no mínimo 3 caracteres.
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3">   
+                        <label>fone</label>          
+                        <input class="form-control" type="text" ng-model="colaborador.fone1cola" name="fone1Cola" ui-Fone placeholder="telefone" ng-required="true" ng-minlength="14" ng-maxlength="15"/>                  
+                      </div>                
+                      <div ng-show="auditorForm.fone1Cola.$dirty && colaboradorForm.fone1Cola.$error.required" ng-messages="colaboradorForm.fone1Cola.$error" class="alert alert-danger">
+                        Por favor, preencha o campo telefone.
+                      </div>                           
+
+                      <div class="col-lg-6">   
+                        <label>email</label> 
+                        <input class="form-control" type="email" ng-model="colaborador.emailcola" name="emailCola" placeholder="email" ng-required="true" ng-minlength="8" ng-maxlength="50"/><br>
+                      </div>
+                      <div ng-show="colaboradorForm.emailCola.$dirty" ng-messages="colaboradorForm.emailCola.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo email.
+                        </div>
+                        <div ng-message="minlength" class="alert alert-danger">
+                          O campo email deve ter o formato exemplo@satc.com
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3">   
+                        <label>celular</label>     
+                        <input class="form-control" type="text" ng-model="colaborador.fone2cola" name="fone2Cola" ui-Fone placeholder="telefone" ng-required="false" ng-minlength="14" ng-maxlength="15"/><br>
+                      </div>
+                      <div ng-show="colaboradorForm.fone2Cola.$dirty && colaboradorForm.fone2Cola.$error.required" ng-messages="colaboradorForm.fone2Cola.$error" class="alert alert-danger">
+                        Por favor, preencha o campo telefone.
+                      </div>                            
+                    </div>
+                  </div>
+                </div>
+              </div>  
+            </div>
+
+            <div class="row"> <p>      
+              <div class="col-lg-12"><p>
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    observação
+                  </div>
+                  <div class="panel-body"> <p>
+                    <div class="col-lg-12"> 
+                      <textarea  ng-model="colaborador. obscola" name="obsCola" class="form-control" ng-minlength="5" ng-maxlength="100" rows="3" ></textarea> <br>
+                    </div>
+                    <div ng-show="colaboradorForm.obsCola.$dirty" ng-messages="colaboradorForm.obsCola.$error">
+                      <div ng-message="minlength" class="alert alert-danger">
+                        O campo observação deve ter no mínimo 3 caracteres.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>          
+
+          </form><br>	<!-- fim form -->
+
+          <div>
+            <a class="btn btn-outline  btn-lg  btn-primary glyphicon glyphicon-floppy-save"  ng-click="(colaborador.statuscola = 'A');adicionarColaborador(colaborador)" ng-disabled="colaboradorForm.$invalid"> salvar</a>
+            <a href="#/colaboradores"  class="btn btn-lg btn-outline btn-danger glyphicon glyphicon-remove"> cancelar</a>
+          </div> 
+        </div><br><br>
+      </div><br>
+      <div ng-include="'footer.html'"></div>
+    </div>
+  </div>
+</div> 

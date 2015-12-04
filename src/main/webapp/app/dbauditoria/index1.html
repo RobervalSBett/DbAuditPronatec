@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html  ng-app="app">
+    <head>
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <!-- bootstrap--> 
+        <link rel="stylesheet" type="text/css" href="../../lib/bower/bootstrap/dist/css/bootstrap.css" >      
+        <!-- MetisMenu CSS -->
+        <link href="./../lib/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+        <!-- DataTables CSS -->
+        <link href="../../lib/bower/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+        <!-- DataTables Responsive CSS -->
+        <link href="../../lib/bower/datatables-responsive/css/dataTables.responsive.css" rel="stylesheet">
+        <!-- Custom CSS -->
+        <link href="../styles/css/sb-admin-2.css" rel="stylesheet">
+        <link href="../styles/sb-admin-2.css" rel="stylesheet">
+        <!-- Custom Fonts -->
+        <link href="../../lib/bower/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/app.css">
+        <link rel="stylesheet" type="text/css" href="css/ui.css">
+
+        <script src="lib/angular/angular.js"></script> 
+        <script src="lib/angular/angular-route.js"></script>
+        
+        <!-- filters angular-->
+        <script src="js/filters/filters.js"></script>
+        
+        <!--directives-->
+        <script src="lib/angular/angular-messages.js"></script>
+        <script src="lib/serialGenerator/serialGenerator.js"></script>
+        <script src="lib/ui/ui.js"></script> 
+        <script src="js/app.js"></script>
+        <script src="js/value/configValue.js"></script>
+        <script src="js/config/routeConfig.js"></script>
+
+
+        <!-- controllers-->
+        <script src="js/controllers/auditores/listAuditoresCtrl.js"></script>
+        <script src="js/controllers/auditores/cadAuditoresCtrl.js"></script>
+        <script src="js/controllers/auditores/editAuditoresCtrl.js"></script>
+
+        <script src="js/controllers/auditorias/listAuditoriasCtrl.js"></script>
+        <script src="js/controllers/auditorias/cadAuditoriasCtrl.js"></script> 
+        <script src="js/controllers/auditorias/AuditoriasAndamCtrl.js"></script>
+        <script src="js/controllers/auditorias/editAuditoriasCtrl.js"></script>
+
+        <script src="js/controllers/bairros/listBairrosCtrl.js"></script>
+        <script src="js/controllers/bairros/cadBairrosCtrl.js"></script>
+        <script src="js/controllers/bairros/editBairrosCtrl.js"></script>
+
+        <script src="js/controllers/ceps/listCepsCtrl.js"></script>
+        <script src="js/controllers/ceps/cadCepsCtrl.js"></script>
+        <script src="js/controllers/ceps/editCepsCtrl.js"></script>
+
+        <script src="js/controllers/certificadoras/listCertsCtrl.js"></script>
+        <script src="js/controllers/certificadoras/cadCertsCtrl.js"></script>
+        <script src="js/controllers/certificadoras/editCertsCtrl.js"></script>
+
+        <script src="js/controllers/checklists/listChecklistsCtrl.js"></script>      
+        <script src="js/controllers/checklists/cadChecklistsCtrl.js"></script>
+        <script src="js/controllers/checklists/editChecklistsCtrl.js"></script>
+        <script src="js/controllers/checklists/CheckPointCtrl.js"></script>
+        
+
+        <script src="js/controllers/cidades/listCidadesCtrl.js"></script>      
+        <script src="js/controllers/cidades/cadCidadesCtrl.js"></script>
+        <script src="js/controllers/cidades/editCidadesCtrl.js"></script>
+
+        <script src="js/controllers/clientes/listClientesCtrl.js"></script>
+        <script src="js/controllers/clientes/cadClientesCtrl.js"></script>
+        <script src="js/controllers/clientes/editClientesCtrl.js"></script>
+
+        <script src="js/controllers/colaboradores/listColaboradoresCtrl.js"></script>
+        <script src="js/controllers/colaboradores/cadColaboradoresCtrl.js"></script>
+        <script src="js/controllers/colaboradores/editColaboradoresCtrl.js"></script>
+
+        <script src="js/controllers/equipeAuditores/listEqAuditsCtrl.js"></script>
+        <script src="js/controllers/equipeAuditores/cadEqAuditsCtrl.js"></script>
+        <script src="js/controllers/equipeAuditores/editEqAuditsCtrl.js"></script>
+
+        <script src="js/controllers/naoConformidades/listNCsCtrl.js"></script>
+        <script src="js/controllers/naoConformidades/cadNCsCtrl.js"></script>
+        <script src="js/controllers/naoConformidades/editNCsCtrl.js"></script>         
+
+        <script src="js/controllers/ocorrencias/listOcorrenciasCtrl.js"></script>      
+        <script src="js/controllers/ocorrencias/cadOcorrenciasCtrl.js"></script>
+        <script src="js/controllers/ocorrencias/editOcorrenciasCtrl.js"></script>  
+
+
+        <!--services-->
+        <script src="js/services/auditoresAPIService.js"></script>
+        <script src="js/services/auditoriasAPIService.js"></script>
+        <script src="js/services/bairrosAPIService.js"></script>
+        <script src="js/services/cepsAPIService.js"></script>
+        <script src="js/services/certificadorasAPIService.js"></script>
+        <script src="js/services/checklistsAPIService.js"></script>
+        <script src="js/services/cidadesAPIService.js"></script>
+        <script src="js/services/clientesAPIService.js"></script>
+        <script src="js/services/colaboradoresAPIService.js"></script>
+        <script src="js/services/eqAuditsAPIService.js"></script>
+        <script src="js/services/NCsAPIService.js"></script>
+        <script src="js/services/ocorrenciasAPIService.js"></script>
+
+
+<!--****************** comun ********************************************************-->         
+        <script src="js/config/serialGeneratorConfig.js"></script>
+        <!--*** filters ***-->         
+        <script src="js/filters/nameFilter.js"></script>
+        <script src="js/filters/ellipsisFilter.js"></script> 
+        <!--*** diretivas ***-->         
+        <script src="js/directives/uiAlertDirective.js"></script>
+        <script src="js/directives/uiDateDirective.js"></script>
+        <script src="js/directives/uiCepDirective.js"></script>
+        <script src="js/directives/uiFoneDirective.js"></script>
+        <script src="js/directives/uiCnpjDirective.js"></script>
+        <script src="js/directives/uiCpfDirective.js"></script>
+        <script src="js/directives/uiAcoordion.js"></script>
+        <script src="js/directives/modal.js"></script>
+        
+        <title>  DbAuditoria</title>
+    </head>
+
+
+    <body ng-init="tab=1">     
+
+        <div class="container-fluid"  ><br>
+            <div class="row">
+                <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#/">DbAudit v1.0</a>
+                    </div>
+
+<!--*********************************************************************************************-->           
+                    <!-- /.navbar-header -->
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li>
+                                <a href="#"><i class="fa fa-phone fa-fw"></i>Contato</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                    <div>
+                                        <strong>Pedrinho</strong>
+                                        <span class="pull-right text-muted">
+                                            <em>Hoje</em>
+                                        </span>
+                                    </div>
+                                    <div>exemplo1</div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>                    
+                                <li>
+                                <a class="text-center" href="#">
+                                <strong>Ler todas as mensagens</strong>
+                                <i class="fa fa-angle-right"></i>
+                                </a>
+                                </li>
+                            </ul>                            
+                        </li>
+
+<!--*********************************************************************************************-->               
+                        <!-- /.dropdown-messages -->
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-comment fa-fw"></i>Novo Comentario
+                                            <span class="pull-right text-muted small">4 min atras</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-twitter fa-fw"></i> 3 Novos seguidores
+                                            <span class="pull-right text-muted small">12 min atras</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> Messagem enviada
+                                            <span class="pull-right text-muted small">4 min atras</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>                      
+                                <li>
+                                    <a class="text-center" href="#">
+                                        <strong>Ver todos os alertas</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+<!--******************************************************************************************************--> 
+                        <!-- /.dropdown-user -->
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil do usuario</a>
+                                </li>
+                                <li><a href="#"><i class="fa fa-gear fa-fw"></i>Configurações</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Sair</a>
+                                </li>
+                            </ul>                            
+                        </li>
+                    </ul>
+
+<!--*********************************************************************************************-->  
+                    <!-- /.navbar-top-links -->
+                    <div class="navbar-default sidebar" role="navigation">
+                        <div class="sidebar-nav navbar-collapse">
+                            <ul class="nav" id="side-menu">
+                            <li class="sidebar-search">
+                                <div class="input-group custom-search-form">
+                                    <input type="text" class="form-control" placeholder="Pesquisa...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </span>
+                                </div>                                
+                            </li>
+
+
+<!--******************************************************************************************************--> 
+                            <!-- /input-group -->
+                            <li> 
+                                <a href="#/"><i class="fa fa-home fa-fw glyphicon-home"></i>Home</a>
+                            </li> 
+
+                            <li>
+                                <a href="#"><i class="fa fa-edit fa-edit"></i> Cadastro<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="#auditores">Auditores <i class=" glyphicon glyphicon-pencil "> </i></a>
+                                    </li>                             
+                                    <li>    
+                                        <a href="#bairros">Bairros <i class="glyphicon glyphicon-pencil "> </i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#ceps">CEP  <i class="glyphicon glyphicon-pencil "> </i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#certs"> Certificadoras <i class=" glyphicon glyphicon-pencil "></i></a>
+                                    </li> 
+                                    <li>
+                                        <a  href="#cidades"> Cidades <i class="glyphicon glyphicon-pencil "></i></a>
+                                    </li>
+                                    <li>
+                                        <a  href="#clientes"> Clientes<i class="glyphicon glyphicon-pencil "></i></a>
+                                    </li>
+                                    <li>
+                                        <a  href="#colaboradores"> Colaboradores <i class="glyphicon glyphicon-pencil "></i></a>
+                                    </li>
+                                      
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+
+<!--******************************************************************************************************--> 
+                            <li>
+                                <a href="#auditorias"><i class="fa fa-fw fa-gears" ></i> Auditoria</a>
+                                <!--%%%%%%%%%%%%%%%%%%%%%%%%%%%%<span class="fa arrow"></span>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a  href="#auditorias">Auditorias <i class="fa fa-edit fa-fw"> </i> </a>
+                                    </li>
+                    
+                                    <li>
+                                        <a  href="#ocorrencias">Ocorrencias <i class="fa fa-search fa-fw"> </i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#checklists">Checklist  <i class="fa fa-search fa-fw"> </i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#NCs">Nao conformidades <i class="fa fa-search fa-fw"> </i></a>
+                                    </li>
+                                    <li>
+                                        <a href="#eqAudits"> Equipe Auditor  <i class="fa fa-search-minus fa-fw"> </i></a>
+                                    </li>                                                                              
+                                </ul>
+                                %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%-->  
+                                <!-- /.nav-second-level -->
+                            </li>
+                            
+<!--******************************************************************************************************-->                         
+                            <li>
+                                <a href="#"><i class="fa fa-files-o fa-fw"></i> Relatorios<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a class="fa fa-files-o" href="#home" > Auditoria</a>
+                                    </li> 
+                            <!--    <li>
+                                        <a href="#exemplo">ExemploClientes</a>
+                                    </li>
+                            --> 
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+<!--******************************************************************************************************-->                         
+                            </ul>
+                        </div>
+                        <!-- /.sidebar-collapse -->
+                    </div>
+                    <!-- /.navbar-static-side -->
+                </nav>               
+            </div>  
+        </div>     
+
+
+
+        <!--  AngularJS -->     
+        <script src="../../lib/bower/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap Core JavaScript -->
+        <script src="../../lib/bower/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="../../lib/bower/metisMenu/dist/metisMenu.min.js"></script>
+
+        <!-- DataTables JavaScript -->
+        <script src="../../lib/bower/datatables/media/js/jquery.dataTables.min.js"></script>
+        <script src="../../lib/bower/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+        <!-- Custom Theme JavaScript -->
+        <script src="../scripts/js/sb-admin-2.js"></script>
+        <script src="js/directives/tooltip.js"></script>
+        <script src="js/directives/modal.js"></script>          
+        <script src="js/directives/popover.js"></script>
+      
+        <br><br>
+        <div ng-view>  </div>
+
+
+        <!-- Page-Level Demo Scripts - Tables - Use for reference -->   
+        <script>
+        $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+        responsive: true
+        });
+        });
+        </script>
+
+        <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create', 'UA-XXXXX-X');
+        ga('send', 'pageview');
+        </script>
+        
+        <script>
+            $(function () {
+              $('.js-popover').popover();
+              $('.js-tooltip').tooltip();
+              $('.js-modal').tooltip();
+              $('#tall-toggle').click(function () {
+                $('#tall').toggle();
+              });
+            });
+            </script>
+
+    </body>
+
+</html>
+

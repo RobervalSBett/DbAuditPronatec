@@ -1,0 +1,57 @@
+<div id="page-wrapper"><br>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4>lista de certificadoras</h4>   
+                </div><br>
+                <div class="container-fluid">
+                    <div> <a class="btn btn-outline btn-success glyphicon glyphicon-plus" href="#/cadCerts"> nova </a>
+                    </div><br>
+                    <input class="form-control" type="text" ng-model="criterioDeBusca" placeholder="Pesquisar.."/>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="home-pills">
+                            <div class="panel-body">
+                                <div class="dataTable_wrapper">
+                                    
+                                    <!--tabela-->
+                                    <table ng-show="certificadoras.length > 0" class="table table-striped table-bordered table-responsive table-hover">
+                                        <tr>                                      
+                                            <th><a href="" ng-click="ordenarPor('fantacert')">nome fantasia <i class="fa fa-sort"></i></a></th>                   
+                                            <th>CEP</th>
+                                            <th>razão social</th>
+                                            <th>fone</th>
+                                            <th>contato</th>
+                                            <th>CNPJ</th>
+                                            <th>inscr. estadual</th>
+                                            <th><a href="" ng-click="ordenarPor('statuscert')">status <i class="fa fa-sort"></i></a></th> 
+                                            <th style="text-align: center;">editar</th> 
+                                            <th style="text-align: center;">excluir</th> 
+                                        </tr>
+                                        <tr ng-class="{'selecionado negrito': certificadora.selecionado}" ng-repeat="certificadora in certificadoras | filter:criterioDeBusca | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">        
+                                            <td>{{certificadora.fantacert}}</td>
+                                            <td>{{certificadora.idcep.cep | cep }}</td>
+                                            <td>{{certificadora.razaocert}}</td>   
+                                            <td>{{certificadora.fone1cert | fone }}</td>  
+                                            <td>{{certificadora.contatocert}}</td>  
+                                            <td>{{certificadora.cnpjcert | cnpj }}</td> 
+                                            <td>{{certificadora.inscricert}}</td>   
+                                            <td>{{certificadora.statuscert}}</td>
+                                            <td style="text-align: center;"><a href="#/editCerts/{{certificadora.idcert}}" class="btn btn-outline btn-warning btn-xs glyphicon glyphicon-edit"></a></td>
+                                            <td style="text-align: center;"><a class="btn btn-outline btn-danger  btn-xs glyphicon glyphicon-remove" ng-click="(certificadora.statuscert = 'D');adicionarCertificadora(certificadora)"></a></td>
+                                        </tr>
+                                    </table>
+                                    
+                                </div><br>      
+                            </div><br>
+                        </div>
+                    </div>
+                </div>                        
+            </div>
+            <div ng-include="'footer.html'"></div>       
+        </div> 
+    </div>
+</div> 
+       
+       
+       

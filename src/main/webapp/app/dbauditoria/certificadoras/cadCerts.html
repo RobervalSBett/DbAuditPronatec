@@ -1,0 +1,249 @@
+<div id="page-wrapper"><br>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading"> 
+          <h4> cadastro de certificadoras </h4>  
+        </div> <br>
+        <div class="container-fluid" style="text-align:center;">
+
+          <form name="certForm">
+
+<!--********************************************** dados pessoais *********************************************-->
+            <div class="row">      
+              <div class="col-lg-12">
+                <div class="panel panel-red">
+                  <div class="panel-heading">
+                    dados
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel-collapse">
+
+                      <div class="col-lg-12">
+                        <label>razão social</label>
+                        <input class="form-control" type="text"  ng-model="certificadora.razaocert" name="razaocert" placeholder="Razao Social"  ng-required="true" ng-minlength="3" ng-maxlength="50"/><p>
+                      </div>
+                      <div ng-show="certForm.razaocert.$dirty" ng-messages="certForm.razaocert.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo razão social.
+                        </div>
+                        <div ng-message="minlength" class="alert alert-danger">
+                          O campo razão social deve ter no mínimo 3 caracteres.
+                        </div>
+                      </div> 
+
+                      <div ng-show="certForm.cnpjcert.$dirty" ng-messages="certForm.cnpjcert.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo cnpj.
+                        </div>
+                        <div ng-message="minlength" class="alert alert-danger">
+                          O campo cnpj deve ter o formato 00.000.000/0000-00
+                        </div>
+                        <div ng-message="maxlength" class="alert alert-danger">
+                          O campo cnpj deve ter o formato 00.000.000/0000-00
+                        </div>                    
+                      </div>  
+
+                      <div class="col-lg-3">
+                        <label>CNPJ</label>         
+                        <input class="form-control" type="text" ng-model="certificadora.cnpjcert" name="cnpjcert" ui-Cnpj placeholder="CNPJ"  ng-required="true" ng-minlength="18"/>
+                      </div>
+
+                      <div class="col-lg-6">
+                        <label>nome fantasia</label>  
+                        <input class="form-control" type="text" style="text-transform:uppercase" ng-model="certificadora.fantacert" name="fantacert" placeholder="Nome Fantasia" ng-required="true" ng-minlength="3" ng-maxlength="50"/><br>
+                      </div>
+                      <div ng-show="certForm.fantacert.$dirty" ng-messages="certForm.fantacert.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo nome fantasia!
+                        </div>
+                        <div ng-message="minlength" class="alert alert-danger">
+                          O campo nome fantasia deve ter no mínimo 3 caracteres.
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3">   
+                        <label>inscrição estadual</label>     
+                        <input class="form-control" type="text" ng-model="certificadora.inscricert" name="inscricert" placeholder="Incrição Estadual" ng-required="true" ng-minlength="3" ng-maxlength="14"/> <br>
+                      </div>
+                      <div ng-show="certForm.inscricert.$dirty" ng-messages="certForm.inscricert.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo inscrição estadual.
+                        </div>
+                        <div ng-message="minlength" class="alert alert-danger">
+                          O campo inscriçao estadual deve ter no mínimo 3 caracteres.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+            </div><!-- fim row -->
+
+<!--********************************************** endereco *********************************************-->
+            <div class="row"><p>
+              <div class="col-md-7">
+                <div class="panel panel-red">  
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      endereço
+                    </div>
+                    <div class="panel-body">
+
+                      <div class="col-lg-5">
+                        <label>cep</label>
+                          <select class="form-control" ng-model="certificadora.idcep" data-ng-options="cep as cep.cep for cep in ceps track by cep.idcep">		        	
+                            <option value="">selecione um cep</option>
+                          </select>
+                      </div>
+
+                      <div class="col-lg-7">
+                        <label>complemento</label> 
+                          <input class="form-control" type="text" ng-model="certificadora.compleendcli" name="compleendcli" style="text-transform:uppercase" placeholder="Complemento"  ng-minlength="2" ng-maxlength="50"/> <p>
+                      </div>
+                      <div ng-show="clienteForm.compleendcli.$dirty" ng-messages="clienteForm.compleendcli.$error">
+                      </div>
+
+                      <div class="col-lg-5">
+                        <label>cidade</label> 
+                        <input ng-model="certificadora.idcep.cidades.descricid" name="cidade" id="cidade" class="form-control" placeholder="Cidade:" disabled=""> 
+                      </div>
+
+                      <div class="col-lg-2">
+                        <label>UF</label> 
+                        <input ng-model="certificadora.idcep.cidades.ufcid" name="uf" id="uf" class="form-control" placeholder="Uf:" disabled="">
+                      </div>
+
+                      <div class="col-lg-5">
+                        <label>bairro</label> 
+                        <input ng-model="certificadora.idcep.idbai.describai" name="bairro" id="bairro" class="form-control" placeholder="Bairro:" disabled=""><br>
+                      </div>
+                    </div>  
+                  </div>
+                </div>
+              </div><!-- fim row -->
+            
+
+<!--********************************************** responsavel *********************************************-->
+              <div class="col-lg-5">
+                <div class="panel panel-red">
+                  <div class="panel-heading">
+                    responsável
+                  </div>
+                  <div class="panel-body">
+
+                    <div class="col-lg-12">  
+                      <label>nome</label>  
+                      <input class="form-control" type="text"  ng-model="certificadora.contatocert" name="contatocert" placeholder="Responsavel" ng-required="true" ng-minlength="3" ng-maxlength="20"/><p>
+                    </div>
+                    <div ng-show="certForm.contatocert.$dirty" ng-messages="certForm.contatocert.$error">
+                      <div ng-message="required" class="alert alert-danger">
+                        Por favor, preencha o campo Responsavel!
+                      </div>
+                      <div ng-message="minlength" class="alert alert-danger">
+                        O campo Responsável deve ter no mínimo 3 caracteres.
+                      </div>
+                    </div>	
+                    <!--
+                    <div class="col-lg-12">  
+                      <label>email responsável</label> 
+                      <input class="form-control" type="text" ng-model="" name="emailcontato" placeholder="E-mail contato"/><br>
+                    </div>
+                    <div ng-show="certForm.emailcontato.$dirty" ng-messages="certForm.emailcontato.$error">
+                      <div ng-message="required" class="alert alert-danger">
+                        Por favor, preencha o campo E-mail!
+                      </div>
+                      <div ng-message="minlength" class="alert alert-danger">
+                        O campo Email deve ter no mínimo 3 caracteres.
+                      </div>
+                    </div>-->
+                  </div>
+                </div>
+              </div>
+            </div>  
+
+<!--********************************************** Contato *********************************************-->
+            <div class="col-lg-14"> <p>
+              <div class="panel panel-red">
+                <div class="panel-heading">
+                  contato
+                </div>
+                <div class="panel-body">
+
+                  <div class="col-lg-6">
+                    <label>fone</label>     
+                     <input class="form-control" type="text" ng-model="certificadora.fone1cert" name="fone1cert" ui-Fone placeholder="Telefone"  ng-required="true" ng-minlength="14" ng-maxlength="15"/>  
+                  </div>
+                  <div ng-show="certForm.fone1cert.$dirty && certForm.fone1cert.$error.required" ng-messages="certForm.fone1cert.$error" class="alert alert-danger">
+                    Por favor, preencha o campo telefone.
+                  </div>                                
+
+                  <div class="col-lg-6">
+                    <label>celular</label>  
+                    <input class="form-control" type="text" ng-model="certificadora.fone2cert" name="fone2cert" ui-Fone placeholder="Celular"  ng-required="false" ng-minlength="14" ng-maxlength="15"/> <p>
+                  </div>
+                  <div ng-show="certForm.fone2cert.$dirty && certForm.fone2cert.$error.required" ng-messages="certForm.fone2cert.$error" class="alert alert-danger">
+                    Por favor, preencha o campo celular.
+                  </div>                                
+
+                  <div class="col-lg-12">
+                    <label>email</label> 
+                    <input class="form-control" type="text" ng-model="certificadora.emailcert" name="emailcert" placeholder="E-mail" ng-required="true" ng-minlength="3" ng-maxlength="50"/> <p>
+                  </div>
+                  <div ng-show="certForm.emailcert.$dirty" ng-messages="certForm.emailcert.$error">
+                    <div ng-message="required" class="alert alert-danger">
+                      Por favor, preencha o campo email.
+                    </div>
+                    <div ng-message="minlength" class="alert alert-danger">
+                      O campo Email deve ter no mínimo 3 caracteres.
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">
+                    <label>site</label>   
+                    <input class="form-control" type="text" style="text-transform:uppercase" ng-model="certificadora.sitecert" name="sitecert" placeholder="Site" ng-required="true" ng-minlength="3" ng-maxlength="50"/>   <br>
+                  </div>
+                  <div ng-show="certForm.sitecert.$dirty" ng-messages="certForm.sitecert.$error">
+                    <div ng-message="required" class="alert alert-danger">
+                      Por favor, preencha o campo site.
+                    </div>
+                    <div ng-message="minlength" class="alert alert-danger">
+                      O campo site deve ter no mínimo 3 caracteres.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+<!--************************************************************** Observação *********-->              
+            <div class="col-lg-14"><p>
+              <div class="panel panel-red">                
+                <div class="panel-heading">
+                  observação
+                </div>
+                <div class="panel-body"><p>
+                  <div class="col-lg-12"> 
+                    <textarea  ng-model="certificadora.obscert" name="obscert" class="form-control" ng-minlength="5" ng-maxlength="100" rows="3"></textarea> <br>
+                  </div>
+                  <div ng-show="certForm.obscert.$dirty" ng-messages="certForm.obscert.$error">
+                    <div ng-message="minlength" class="alert alert-danger">
+                      O campo observação deve ter no mínimo 5 caracteres.
+                    </div>
+                  </div>
+                </div>                
+              </div> 
+            </div> 
+
+          </form><br>
+
+          <div>
+            <a class="btn btn-outline  btn-lg  btn-primary glyphicon glyphicon-floppy-save" ng-click="(certificadora.statuscert = 'A');adicionarCertificadora(certificadora)" ng-disabled="certForm.$invalid"> salvar</a>
+            <a href="#/certs"  class="btn btn-lg btn-outline btn-danger glyphicon glyphicon-remove"> cancelar</a>
+          </div> 
+
+        </div><br><br>
+      </div><br>			
+      <div ng-include="'footer.html'"></div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,217 @@
+<div id="page-wrapper"><br>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4> cadastro de clientes </h4>
+        </div><br>
+        <div class="container-fluid" style="text-align: center;">
+
+          <form name="clienteForm">
+
+            <!--************************************************* dados pessoais *************************************************--> 
+            <div class="row">     
+              <div class="col-lg-12">
+                <div class="panel panel-red">
+                  <div class="panel-heading">
+                    dados pessoais
+                  </div>
+                  <div class="panel-body">
+                    <div class="panel-collapse">
+
+                      <div class="col-lg-12">  
+                        <label>razão social</label>  
+                        <input class="form-control" type="text" ng-model="cliente.razaocli" name="razaocli" style="text-transform:uppercase" placeholder="Razão Social" ng-required="true" ng-minlength="2" ng-maxlength="50"/><p>
+                      </div>
+                      <div ng-show="clienteForm.razaocli.$dirty" ng-messages="clienteForm.razaocli.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo razão social.
+                        </div>
+                      </div>
+
+                      <div ng-show="clienteForm.cnpjcli.$dirty" ng-messages="clienteForm.cnpjcli.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo cnpj.
+                        </div>
+                        <div ng-message="minlength" class="alert alert-danger">
+                          O campo cnpj deve ter o formato 00.000.000/0000-00
+                        </div>
+                        <div ng-message="maxlength" class="alert alert-danger">
+                          O campo cnpj deve ter o formato 00.000.000/0000-00
+                        </div>                    
+                      </div>
+
+                      <div ng-show="clienteForm.fantacli.$dirty" ng-messages="clienteForm.fantacli.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo nome fantasia.
+                        </div>
+                      </div>
+
+                      <div ng-show="clienteForm.inscricli.$dirty" ng-messages="clienteForm.inscricli.$error">
+                        <div ng-message="required" class="alert alert-danger">
+                          Por favor, preencha o campo número da inscrição estadual.
+                        </div>
+                      </div>
+
+                      <div class="col-lg-3">   
+                        <label>CNPJ</label> 
+                        <input class="form-control" type="text" ng-model="cliente.cnpjcli" name="cnpjcli" ui-Cnpj placeholder="CNPJ" ng-required="true" ng-minlength="17" ng-maxlength="18"/>
+                      </div> 
+
+                      <div class="col-lg-6">   
+                          <label>nome fantasia</label> 
+                          <input class="form-control" type="text" ng-model="cliente.fantacli" name="fantacli" style="text-transform:uppercase" placeholder="Nome Fantasia" ng-required="true" ng-minlength="2" ng-maxlength="50"/><br>
+                      </div>                      
+
+                      <div class="col-lg-3">
+                        <label>inscrição estadual</label>     
+                        <input class="form-control" type="text" ng-model="cliente.inscricli" name="inscricli" placeholder="Inscrição" ng-required="true" ng-minlength="2" ng-maxlength="11"/><br>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>  
+            </div><!-- fim dados pessoais -->
+
+<!--************************************************* endereco *************************************************-->
+            <div class="row"><p>
+              <div class="col-md-7">
+                <div class="panel panel-red">
+                  <div class="panel-heading">
+                    endereço
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-lg-5">
+                      <label>cep</label>
+                        <select class="form-control" ng-model="cliente.idcep" data-ng-options="cep as cep.cep for cep in ceps track by cep.idcep">		        	
+                          <option value="">selecione um cep</option>
+                        </select>
+                    </div>
+
+                    <div class="col-lg-7">
+                      <label>complemento</label> 
+                      <input class="form-control" type="text" ng-model="cliente.compleendcli" name="compleendcli" style="text-transform:uppercase" placeholder="Complemento"  ng-minlength="2" ng-maxlength="50"/><p>
+                    </div>
+                    <div ng-show="clienteForm.compleendcli.$dirty" ng-messages="clienteForm.compleendcli.$error">
+                    </div>
+
+                  <div class="col-lg-5">
+                    <label>cidade</label> 
+                    <input ng-model="cliente.idcep.cidades.descricid" name="cidade" id="cidade" class="form-control" placeholder="Cidade:" disabled=""> 
+                  </div>
+                  <div class="col-lg-2">
+                    <label>uf</label> 
+                    <input ng-model="cliente.idcep.cidades.ufcid" name="uf" id="uf" class="form-control" placeholder="Uf:" disabled="">
+                  </div>
+                  <div class="col-lg-5">
+                    <label>bairro</label> 
+                    <input ng-model="cliente.idcep.idbai.describai" name="bairro" id="bairro" class="form-control" placeholder="Bairro:" disabled=""><br>
+                  </div>
+                </div>
+              </div>
+            </div><!-- fim do endereco -->
+
+<!--************************************************* responsavel *************************************************-->
+            <div class="col-lg-5">
+              <div class="panel panel-red">
+                <div class="panel-heading">
+                  responsável pela auditoria na empresa
+                </div>
+                <div class="panel-body">
+                  <div class="col-lg-12">  
+                    <label>contato</label> 
+                    <input class="form-control" type="text" ng-model="cliente.contatocli" name="contatocli" style="text-transform:uppercase" placeholder="Contato" ng-required="true" ng-minlength="3" ng-maxlength="50"/><p>
+                  </div>
+                  <div ng-show="clienteForm.contatocli.$dirty" ng-messages="clienteForm.contatocli.$error">
+                    <div ng-message="required" class="alert alert-danger">
+                      Por favor, preencha o campo contato.
+                    </div>
+                  </div>
+
+                  <div class="col-lg-12">  
+                    <label>email do responsável</label>
+                    <input class="form-control" type="email" ng-model="cliente.emailcontato" name="emailcontato" style="text-transform:uppercase" placeholder="E-mail contato" ng-required="true" ng-minlength="3" ng-maxlength="50"/><br>
+                  </div>
+                  <div ng-show="clienteForm.emailcontato.$dirty" ng-messages="clienteForm.emailcontato.$error">
+                    <div ng-message="required" class="alert alert-danger">
+                      Por favor, preencha o campo email do contato.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- fim do reponsavel -->
+
+<!--************************************************* Contato *************************************************-->
+            <div class="col-md-12"> <p>
+              <div class="panel panel-red">
+                <div class="panel-heading">
+                  contato
+                </div>
+                <div class="panel-body">
+                  <div class="col-lg-6">
+                    <label>fone</label>    
+                    <input class="form-control" type="tel" ng-model="cliente.fone1cli" name="fone1cli" ui-Fone placeholder="Telefone" ng-required="true" ng-minlength="14" ng-maxlength="15"/>   
+                  </div>
+                  <div ng-show="clienteForm.fone1cli.$dirty && clienteForm.fone1cli.$error.required" ng-messages="clienteForm.fone1cli.$error" class="alert alert-danger">
+                    Por favor, preencha o campo telefone.
+                  </div>                            
+
+                  <div class="col-lg-6">
+                    <label>celular</label> 
+                    <input class="form-control" type="tel" ng-model="cliente.fone2cli" name="fone2cli" ui-Fone placeholder="Celular" ng-required="true" ng-minlength="14" ng-maxlength="15"/><p>
+                  </div>
+                  <div ng-show="clienteForm.fone2cli.$dirty && clienteForm.fone2cli.$error.required" ng-messages="clienteForm.fone2cli.$error" class="alert alert-danger">
+                    Por favor, preencha o campo telefone.
+                  </div>                                
+
+                  <div class="col-lg-12">
+                    <label>email</label> 
+                    <input class="form-control" type="email" ng-model="cliente.emailcli" name="emailcli" placeholder="E-mail" ng-required="true" ng-minlength="3" ng-maxlength="50"/><p>
+                  </div>
+                  <div ng-show="clienteForm.emailcli.$dirty" ng-messages="clienteForm.emailcli.$error">
+                    <div ng-message="required" class="alert alert-danger">
+                      Por favor, preencha o campo email do cliente.
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <label>site</label>  
+                    <input class="form-control" type="text" ng-model="cliente.sitecli" name="sitecli" style="text-transform:uppercase" placeholder="Site" ng-required="true" ng-minlength="2" ng-maxlength="50"/><br>
+                  </div>
+                  <div ng-show="clienteForm.sitecli.$dirty" ng-messages="clienteForm.sitecli.$error">
+                    <div ng-message="required" class="alert alert-danger">
+                      Por favor, preencha o campo site.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div><!-- fim do contato -->
+
+<!--************************************************* Observação *************************************************-->              
+            <div class="col-lg-12"><p>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  observação
+                </div>
+                <div class="panel-body"> <p>
+                  <div class="col-lg-12"> 
+                    <textarea ng-model="cliente.obscli" name="obs" class="form-control" ng-minlength="5" ng-maxlength="100" rows="3"></textarea><br>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div>
+          </form><br>
+
+          <!--botoes-->
+          <div>
+            <a class="btn btn-outline  btn-lg  btn-primary glyphicon glyphicon-floppy-save" ng-click="(cliente.statuscli = 'A');adicionarCliente(cliente)" ng-disabled="clienteForm.$invalid"> salvar</a>
+            <a href="#/clientes"  class="btn btn-lg btn-outline btn-danger glyphicon glyphicon-remove"> cancelar</a>
+          </div> 
+
+        </div> <br><br>
+      </div><br>
+      <div ng-include="'footer.html'"></div>                          
+    </div>
+  </div>
+</div> 

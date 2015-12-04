@@ -1,0 +1,261 @@
+<div id="page-wrapper"><br>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<h4> cadastro de auditorias </h4>   
+				</div><br>
+				<div class="container-fluid" style="text-align: center;" >
+
+				<form name="auditoriasForm"  id="formAu">
+					
+					<div class="row"><p> 
+						<div class="col-md-6"> <!--** *********************** Certificadoras *************************-->  
+							<div class="panel panel-red">
+								<div class="panel-heading">
+									empresas certificadoras
+								</div>
+								<div class="panel-body">
+									<div class="col-lg-3">
+										<label>codigo</label>  
+										<input class="form-control" type="number" ng-model="auditoria.certificadora.idcert" name="certi" placeholder="Codigo certificadora"  ng-required="true" disabled=""/> 
+									</div>
+									<div class="col-lg-9"> 
+										<label>nome fantasia</label>  
+										<input class="form-control" type="text" ng-model="auditoria.certificadora.fantacert" name="certif" placeholder="Nome certificadora"  ng-required="true" disabled=""/>
+									</div>
+
+									<div ng-show="auditoriasForm.certi.$dirty" ng-messages="auditoriasForm.certi.$error">
+										<div ng-message="required" class="alert alert-danger">
+											Por favor, preencha o campo nome da certificadora.
+										</div>
+									</div>
+
+									<div  class="col-lg-12">
+										<select  name="certif" class="form-control" ng-model="auditoria.certificadora" ng-options="certificadora.fantacert + ' ( ' + (certificadora.idcert) + ' )' for certificadora in certificadoras">
+											<option value="">lista de certificadoras</option>
+										</select>
+									</div>
+									<hr>
+									<div >
+										<a class="btn btn-outline btn-success  btn-sm glyphicon glyphicon-pencil " name="salvar" href="#/cadCerts"> nova certificadora</a>
+									</div>
+								</div><br>   
+							</div>
+						</div> 
+
+						<div class="col-lg-6"> <!--** *******************************Clientes-->
+							<div class="panel panel-red">
+								<div class="panel-heading">
+									empresas clientes
+								</div> 
+								<div class="panel-body">
+									<div class="col-lg-3">
+										<label>clientes</label>  
+										<input class="form-control"  type="number" ng-model="auditoria.idcli.idcli " name="clie" placeholder="Codigo Cliente"  ng-required="true" disabled=""/>
+									</div>
+									<div class="col-lg-9"> 
+										<label>nome fantasia</label> 
+										<input class="form-control"    type="text" ng-model="auditoria.idcli.fantacli " name="cli" placeholder="Nome" ng-required="true" disabled=""/>
+									</div>
+
+									<div ng-show="auditoriasForm.clie.$dirty" ng-messages="auditoriasForm.clie.$error">
+										<div ng-message="required" class="alert alert-danger">
+											Por favor, preencha o campo codigo do(a) cliente.
+										</div>                              
+									</div>
+
+									<div class="col-lg-12">
+										<select  name="clie" class="form-control" ng-model="auditoria.idcli" ng-options="idcli.fantacli + ' ( ' + (idcli.idcli) + ' )' for idcli  in clientes | orderBy:'idcli'">
+											<option value="">lista de clientes</option>
+										</select>
+									</div>   
+									<div >
+										<a class="btn btn-outline btn-success  btn-sm glyphicon glyphicon-pencil" name="salvar" href="#/CadClientes" > novo cliente</a>
+									</div>
+								</div><br>
+							</div>
+						</div><p>
+					</div><p>   
+
+					<!-- ***************************************************************************dados Auditorias -->            
+					<div class="row"><p>       
+						<div class="col-lg-12"> 
+							<div class="panel panel-red">
+								<div class="panel-heading">
+									dados da auditoria
+								</div>
+								<div class="panel-body">
+									<div class="panel-collapse">
+									<input class="form-control" type="hidden" ng-model="auditoria.descriaudit " id="desc" name="descr" placeholder="Descrição Auditoria" 
+									ng-required="true" ng-minlength="5" ng-maxlength="200"/>
+										<div  class="col-lg-12">
+											<label>descrição auditoria</label> 
+											<textarea class="form-control" pattern="[A-Za-z]++"  type="text" ng-model="auditoria.descriaudit " name="descr"  placeholder="Descrição....." ng-required="true" required="" ng-minlength="5" ng-maxlength="250"></textarea> 
+										</div>
+
+										<!--************************************************  Validadção dos campos *****************************************-->
+										<div ng-show="auditoriasForm.descr.$dirty" ng-messages="auditoriasForm.descr.$error">
+											<div ng-message="required" class="alert alert-danger">
+												Por favor, preencha o campo descrição .
+											</div>
+											<div ng-message="minlength" class="alert alert-danger">
+												O campo descrição deve ter no minimo 5 caracteres.
+											</div>
+											<div ng-message="maxlength" class="alert alert-danger">
+												O campo descrição deve ter no maximo 200 caracteres.
+											</div>
+										</div><br>
+									</div>
+								</div> 
+
+								<div class="panel-body">
+									<div class="panel-collapse">
+									<input class="form-control" iu-date type="hidden" ng-model="auditoria.descriobjaudit" name="obj"  placeholder="Objetivo...." ng-required="true" ng-minlength="5" ng-maxlength="200"/>
+										<div class="col-lg-12">
+											<label>objetivo da auditoria</label>
+											<textarea class="form-control" iu-date type="text" ng-model="auditoria.descriobjaudit" name="obj"  placeholder="Objetivo..." ng-required="true" ng-minlength="5" ng-maxlength="200"/></textarea>
+										</div>
+
+										<!--************************************************  Validadção dos campos *****************************************-->
+										<div ng-show="auditoriasForm.obj.$dirty" ng-messages="auditoriasForm.obj.$error">
+											<div ng-message="required" class="alert alert-danger">
+												Por favor, preencha o campo objetivo.
+											</div>
+											<div ng-message="minlength" class="alert alert-danger">
+												O campo objetivo deve ter no minimo 5 caracteres.
+											</div>
+											<div ng-message="maxlength" class="alert alert-danger">
+												O campo objetivo deve ter no maximo 200 caracteres.
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="panel-body">
+									<div class="col-lg-6"><br>
+										<select class="form-control" ng-model="auditoria.tipoaudit ">
+											<option value="">selecione o tipo..</option>
+											<option value="I">Interno</option>
+											<option value="E">Externo</option>
+										</select>
+									</div>
+									<div class="panel-collapse"> 
+										<div class="col-lg-6">
+											<label>tipo de auditoria</label>
+									        <input class="form-control"  type="text" ng-model="auditoria.tipoaudit" name="tipos" ng-required="true" disabled=""/> 
+										</div>
+										<br>
+										<div ng-show="auditoriasForm.tipos.$dirty" ng-messages="auditoriasForm.tipo.$error">
+											<div ng-message="required" class="alert alert-danger">
+												Por favor, preencha o campo tipo de auditoria.
+											</div>
+										</div>
+									</div>
+								</div><br>
+							</div><br>          
+						</div>
+					</div><p>
+
+					<!-- ***************************************************************************data e hora -->
+					<div class="row"><p>
+						<div class="col-md-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									data do cadastro
+								</div>
+								<div class="panel-body" style="text-align: center;"> <p>
+									<div class="col-lg-12">
+										<input class="form-control" placeholder="DD/MM/AAAA HH:MM:SS" type="text" ng-model="auditoria.dthrcadaudit" name="dthrcad" ng-required="true" ng-minlength="19" ng-maxlength="19"/>
+									</div>
+									<div ng-show="auditoriasForm.dthrcad.$dirty" ng-messages="auditoriasForm.dthrcad.$error">
+										<div ng-message="required" class="alert alert-danger">
+											Por favor, preencha o campo data / hora do cadastro da auditoria.
+										</div>
+										<div ng-message="minlength" class="alert alert-danger">
+											O formato DD/MM/AAAA HH:MM:SS.
+										</div>
+										<div ng-message="maxlength" class="alert alert-danger">
+											O formato DD/MM/AAAA HH:MM:SS.
+										</div>
+									</div> 
+									<a class="btn btn-outline btn-danger  btn-sm glyphicon glyphicon-calendar " name="salvar"></a>
+								</div><br>
+							</div>
+						</div>
+
+						<div class="col-md-4">
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									data inicial da auditoria
+								</div>
+								<div class="panel-body" style="text-align: center;"><p>
+									<div class="col-lg-12">
+										<input class="form-control" placeholder="DD/MM/AAAA HH:MM:SS" type="text" ng-model="auditoria.dthriniaudit" name="dthrinic" ng-minlength="19" ng-maxlength="19"/>
+									</div>
+									<div ng-show="auditoriasForm.dthrinic.$dirty" ng-messages="auditoriasForm.dthrinic.$error">
+										<div ng-message="required" class="alert alert-danger">
+											Por favor, preencha o campo data / hora do cadastro da auditoria.
+										</div>
+										<div ng-message="minlength" class="alert alert-danger">
+											O formato DD/MM/AAAA HH:MM:SS.
+										</div>
+									</div>                        
+									<a class="btn btn-outline btn-danger  btn-sm glyphicon glyphicon-calendar " name="salvar"></a>
+								</div><br>
+							</div>
+						</div>
+
+						<div class="col-md-4"> 
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									data da realização 
+								</div>
+								<div class="panel-body" style="text-align: center;"> <p>
+									<div class="col-lg-12">
+										<input class="form-control" placeholder="DD/MM/AAAA HH:MM:SS" type="text" ng-model="auditoria.dthrrealiaudit" name="dthrrealiz"  ng-minlength="19" ng-maxlength="19"/>
+									</div>
+									<div ng-show="auditoriasForm.dthrrealiz.$dirty" ng-messages="auditoriasForm.dthrrealiz.$error">
+										<div ng-message="required" class="alert alert-danger">
+											Por favor, preencha o campo data / hora do cadastro da auditoria.
+										</div>
+										<div ng-message="minlength" class="alert alert-danger">
+											O formato DD/MM/AAAA HH:MM:SS.
+										</div>
+										<div ng-message="maxlength" class="alert alert-danger">
+											O formato DD/MM/AAAA HH:MM:SS.
+										</div>
+									</div>     
+									<a class="btn btn-outline btn-danger  btn-sm glyphicon glyphicon-calendar " name="salvar"></a>
+								</div><br>
+							</div><p>
+						</div> 
+
+						<div class="col-lg-12"><p>
+							<div class="panel panel-default">
+								<div class="panel-heading">
+									observação
+								</div>
+								<div class="panel-body"><p>
+									<div class="col-lg-12"> 
+										<textarea  ng-model="auditoria.obsaudit" name="obs" class="form-control" rows="3"></textarea><br>
+										<input class="form-control" type="hidden" ng-model="auditoria.statusaudit" name="status" placeholder="Status" />      
+									</div>
+								</div>
+							</div>
+						</div>                                   
+					</div>            
+				</form>  
+				<hr>
+
+					<!--botoes--> 
+					<div>
+						<a class="btn btn-outline  btn-lg  btn-primary glyphicon glyphicon-floppy-save" ng-click="(auditoria.statusaudit ='A');adicionarAuditoria(auditoria)" ng-disabled="auditoriasForm.$invalid" > salvar</a>
+						<a href="#/auditorias"  class="btn btn-lg btn-outline btn-danger glyphicon glyphicon-remove"> cancelar</a>   
+					</div> 
+				</div><br>  		
+			</div>
+		</div>              
+		<div ng-include="'footer.html'"></div>            
+	</div>     
+</div>  

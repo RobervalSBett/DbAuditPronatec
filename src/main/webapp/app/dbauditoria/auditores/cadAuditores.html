@@ -1,0 +1,215 @@
+<div id="page-wrapper"><br>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h4> cadastro de auditores </h4>
+        </div><br>
+        <div class="container-fluid" style="text-align: center;">
+
+        <form name="auditorForm">
+
+          <!--********* dados pessoais *********-->  
+          <div class="row">      
+            <div class="col-lg-12">
+              <div class="panel panel-red">
+                <div class="panel-heading">
+                  dados pessoais
+                </div>
+                <div class="panel-body">
+
+                  <div class="panel-collapse">
+
+                    <div class="col-lg-12">
+                      <label>nome</label>
+                      <input class="form-control" type="text" ng-model="auditor.nomeaudit" name="nomeAudit" placeholder="Auditor(a)" ng-required="true" ng-minlength="3" ng-maxlength="60"/> <p>
+                    </div>
+                    <div ng-show="auditorForm.nomeAudit.$dirty" ng-messages="auditorForm.nomeAudit.$error">
+                      <div ng-message="required" class="alert alert-danger">
+                        Por favor, preencha o campo nome.
+                      </div>
+                      <div ng-message="minlength" class="alert alert-danger">
+                        O campo nome deve ter no mínimo 3 caracteres.
+                      </div>
+                    </div>
+
+                    <div ng-show="auditorForm.cpfAudit.$dirty" ng-messages="auditorForm.cpfAudit.$error">
+                      <div ng-message="required" class="alert alert-danger">
+                        Por favor, preencha o campo cpf.
+                      </div>
+                      <div ng-message="minlength" class="alert alert-danger">
+                        O campo cpf deve ter o formato 00.000.000-00
+                      </div>
+                      <div ng-message="maxlength" class="alert alert-danger">
+                        O campo cpf deve ter o formato 00.000.000-00
+                      </div>                    
+                    </div>
+
+                    <div class="col-lg-3">
+                      <label>cpf</label>
+                      <input class="form-control" type="text" ng-model="auditor.cpfaudit" name="cpfAudit" ui-Cpf placeholder="CPF" ng-required="true" ng-minlength="13" ng-maxlength="14"/>
+                    </div>         
+
+                    <div class="col-lg-6"><label>tipo de auditoria</label>
+                      <select class="form-control" ng-model="auditor.tipoaudit ">
+                        <option value="" >selecione uma opção</option>
+                        <option value="I">Interno</option>
+                        <option value="E">Externo</option>
+                      </select>
+                    </div><br>  
+
+                    <div class="col-lg-3"><br>
+                      <input class="form-control" type="text" ng-model="auditor.tipoaudit" name="tipoAudit" placeholder="Tipo de auditor" ng-required="true" ng-minlength="1" ng-maxlength="1" disabled=""/><br>
+                    </div>
+                    <div ng-show="auditorForm.tipoAudit.$dirty" ng-messages="auditorForm.tipoAudit.$error">
+                      <div ng-message="required" class="alert alert-danger">
+                        Por favor, preencha o campo tipo de auditor!
+                      </div>
+                      <div ng-message="minlength" class="alert alert-danger">
+                        O campo tipo de auditor deve ter no mínimo 3 caracteres.
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>  
+          </div><!--fim row-->
+
+
+          <!--********* Endereço *********-->
+          <div class="row"> <p>
+            <div class="col-md-7">
+              <div class="panel panel-default">
+                <div class="panel panel-red">
+                  <div class="panel-heading">
+                    endereço
+                  </div>
+                  <div class="panel-body">
+
+                  <div class="col-lg-5">
+                    <label>cep</label>
+                    <select class="form-control" ng-model="auditor.cep" data-ng-options="cep as cep.cep for cep in ceps track by cep.idcep">		        	
+                      <option value="">selecione um cep</option>
+                    </select>
+                  </div>                           
+
+                  <div class="col-lg-7">
+                    <label>complemento</label>
+                    <input class="form-control" type="text" ng-model="auditor.compleendaudit" name="compleEndAudit" placeholder="Complemento" /><p>
+                  </div>
+
+                  <div class="col-lg-5">
+                    <label>cidade</label>
+                    <input ng-model="auditor.cep.cidades.descricid" name="cidade" id="cidade" class="form-control" placeholder="Cidade" disabled="">
+                  </div>
+
+                  <div class="col-lg-2">
+                    <label>uf</label>
+                    <input ng-model="auditor.cep.cidades.ufcid" name="uf" id="uf" class="form-control" placeholder="UF" disabled="">
+                  </div>
+
+                  <div class="col-lg-5">
+                    <label>bairro</label>
+                    <input ng-model="auditor.cep.idbai.describai" name="bairro" id="bairro" class="form-control" placeholder="Bairro" disabled=""><br>
+                  </div>
+                </div>  
+              </div>
+            </div>
+          </div><!--fim row-->
+
+
+          <!--********* Login *********-->
+          <div class="col-lg-5">
+            <div class="panel panel-red">
+              <div class="panel-heading">
+                login/senha.
+              </div>
+              <div class="panel-body">
+
+                <div class="col-lg-12">
+                  <label>usuário</label> 
+                  <input class="form-control" type="text" ng-model="auditor.usuaudit" name="usuAudit" placeholder="Usuário"/><p>
+                </div>
+
+                <div class="col-lg-12">
+                  <label>senha</label> 
+                  <input class="form-control" type="password" ng-model="auditor.senhaudit" name="senhAudit" placeholder="Senha"/><br>
+                </div>
+              </div>
+            </div>
+          </div><!--fim row-->
+
+
+          <!--********** Contato ***********-->
+          <div class="col-md-12"> <p>
+            <div class="panel panel-red">
+              <div class="panel-heading">
+                contato
+              </div>
+                <div class="panel-body">
+
+                  <div class="col-lg-6">
+                    <label>fone</label>   
+                    <input class="form-control" type="text" ng-model="auditor.fone1audit" name="fone1Audit" ui-Fone placeholder="Fone"  ng-required="true" ng-minlength="14" ng-maxlength="15"/>
+                  </div>
+                  <div ng-show="auditorForm.fone1Audit.$dirty && auditorForm.fone1Audit.$error.required" ng-messages="auditorForm.fone1Audit.$error" class="alert alert-danger">
+                    Por favor, preencha o campo telefone.
+                  </div>                                
+
+                  <div class="col-lg-6">
+                    <label>celular</label>
+                    <input class="form-control" type="text" ng-model="auditor.fone2audit" name="fone2Audit" ui-Fone placeholder="Fone" ng-required="false" ng-minlength="14" ng-maxlength="15"/><p>
+                  </div>
+                  <div ng-show="auditorForm.fone2Audit.$dirty && auditorForm.fone2Audit.$error.required" ng-messages="auditorForm.fone1Audit.$error" class="alert alert-danger">
+                    Por favor, preencha o campo telefone.
+                  </div>                                
+
+                  <div class="col-lg-12">
+                    <label>email:</label>
+                    <input class="form-control" type="email" ng-model="auditor.emailaudit" name="emailAudit" placeholder="Email"  ng-required="true" ng-minlength="8" ng-maxlength="100"/><p>
+                  </div>
+                  <div ng-show="auditorForm.emailAudit.$dirty" ng-messages="auditorForm.emailAudit.$error">
+                    <div ng-message="required" class="alert alert-danger">
+                      Por favor, preencha o campo email.
+                    </div>
+                    <div ng-message="minlength" class="alert alert-danger">
+                      O campo email deve ter no mínimo 3 caracteres.
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+          <!--********* Observação ***********-->              
+          <div class="col-lg-12"><p>
+            <div class="panel panel-default">            
+              <div class="panel-heading">
+                observação
+              </div>
+              <div class="panel-body"><p>
+                <div class="col-lg-12"> 
+                  <textarea  ng-model="auditor.obsaudit" name="obsAudit" class="form-control" ng-minlength="5" ng-maxlength="100" rows="3"></textarea><br>
+                </div>
+                <div ng-show="auditorForm.obsAudit.$dirty" ng-messages="auditorForm.obsAudit.$error">
+                  <div ng-message="minlength" class="alert alert-danger">
+                    O campo obs deve ter no mínimo 5 caracteres.
+                  </div>
+                </div>
+              </div>            
+            </div> 
+          </div>
+
+        </form><br>
+
+        <div>
+          <a class="btn btn-outline  btn-lg  btn-primary glyphicon glyphicon-floppy-save" ng-click="(auditor.statusauditores = 'A');adicionarAuditor(auditor)" ng-disabled="auditorForm.$invalid"> salvar</a>
+          <a href="#/auditores" class="btn btn-lg btn-outline btn-danger glyphicon glyphicon-remove"> cancelar</a>
+        </div> 
+
+      </div><br><br>
+      </div><br>
+      <div ng-include="'footer.html'"></div>
+    </div>
+  </div>  
+</div>
