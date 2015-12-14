@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="67e096eb-8f2c-41fa-8472-4d7f62e0fc60">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select 
+  c.razaocli as cliente_razao_social,
+  c.fantacli as cliente_nome_fantasia,
+  c.cnpjcli as cliente_cnpj,
+  c.inscricli as cliente_inscricao_estadual,
+  c.fone1cli as cliente_fone1,
+  c.fone2cli as cliente_fone2,
+  c.emailcli as cliente_email
+from auditorias a
+left outer join clientes c on (a.idcli = c.idcli)
+where idaudit = 1]]>
+	</queryString>
+	<field name="cliente_razao_social" class="java.lang.String"/>
+	<field name="cliente_nome_fantasia" class="java.lang.String"/>
+	<field name="cliente_cnpj" class="java.lang.String"/>
+	<field name="cliente_inscricao_estadual" class="java.lang.String"/>
+	<field name="cliente_fone1" class="java.lang.String"/>
+	<field name="cliente_fone2" class="java.lang.String"/>
+	<field name="cliente_email" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="125" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20" uuid="c5a719ce-c13d-4280-a087-bc208b6189a0"/>
+				<text><![CDATA[DbAudit Vr 1.0]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="492" y="0" width="63" height="20" uuid="b4c0093e-e9ce-436c-82b2-bf7ec7e9acec"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="458" y="0" width="34" height="20" uuid="18feab33-91d2-4187-8562-24c60f6371b3"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Data:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="23" width="555" height="22" uuid="44278184-726e-4469-a2ab-e7afa659e639"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[RELATÓRIO FINAL DE AUDITORIA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="46" width="555" height="22" uuid="339bab25-4063-4bec-841b-6f994cf5dc4d"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CLIENTE]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
