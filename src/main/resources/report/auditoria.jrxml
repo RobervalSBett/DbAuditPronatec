@@ -3,6 +3,9 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/lucas/dev/java-projects/DbAuditPronatec/src/main/resources/report/"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select 
   c.razaocli as cliente_razao_social,
@@ -27,7 +30,7 @@ where idaudit = 1]]>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="125" splitType="Stretch">
+		<band height="45" splitType="Stretch">
 			<staticText>
 				<reportElement x="0" y="0" width="100" height="20" uuid="c5a719ce-c13d-4280-a087-bc208b6189a0"/>
 				<text><![CDATA[DbAudit Vr 1.0]]></text>
@@ -49,31 +52,109 @@ where idaudit = 1]]>
 				</textElement>
 				<text><![CDATA[RELATÓRIO FINAL DE AUDITORIA]]></text>
 			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="229" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="46" width="555" height="22" uuid="339bab25-4063-4bec-841b-6f994cf5dc4d"/>
+				<reportElement x="0" y="0" width="555" height="22" uuid="339bab25-4063-4bec-841b-6f994cf5dc4d"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
 				<text><![CDATA[CLIENTE]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="0" y="22" width="80" height="15" uuid="f1e2abc0-91b8-4bcb-8e0d-f1360d1c92fa"/>
+				<text><![CDATA[Razão Social:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="37" width="80" height="15" uuid="cdfe9755-a67d-43a1-9105-8da772fc457e"/>
+				<text><![CDATA[CNPJ:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="67" width="80" height="15" uuid="3ce42dbb-b635-44ce-8cf4-1374dd11e63a"/>
+				<text><![CDATA[Telefone 2:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="52" width="80" height="15" uuid="194c7b75-abc0-4c26-8273-d0f043456863"/>
+				<text><![CDATA[Telefone 1:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="52" width="80" height="15" uuid="e2310366-981c-4fcf-8a27-24f64b0f5ee4"/>
+				<text><![CDATA[Email:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="37" width="80" height="15" uuid="2cd8649e-4556-4aa7-975d-336be5f38100"/>
+				<text><![CDATA[Insc. Estadual:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="303" y="22" width="80" height="15" uuid="cc376888-fb11-4596-bb31-aa45d2995baa"/>
+				<text><![CDATA[Nome Fantasia:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="80" y="22" width="220" height="15" uuid="836a6458-6464-46fc-9afe-25db4a0f7e9b"/>
+				<textFieldExpression><![CDATA[$F{cliente_razao_social}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="37" width="220" height="15" uuid="45d88538-5c3d-4ddf-b122-d0fee04edd67"/>
+				<textFieldExpression><![CDATA[$F{cliente_cnpj}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="52" width="220" height="15" uuid="6692f092-a914-4257-a807-e069adb970ce"/>
+				<textFieldExpression><![CDATA[$F{cliente_fone1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="67" width="220" height="15" uuid="16860c56-c21d-43ee-adf2-69e66df27e69"/>
+				<textFieldExpression><![CDATA[$F{cliente_fone2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="22" width="172" height="15" uuid="a96f09ad-dcd7-4c5c-8ab6-12e1fad3a568"/>
+				<textFieldExpression><![CDATA[$F{cliente_nome_fantasia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="37" width="172" height="15" uuid="f76523e1-3aa0-496c-b25b-2083070b6c9b"/>
+				<textFieldExpression><![CDATA[$F{cliente_inscricao_estadual}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="383" y="52" width="172" height="15" uuid="938eeb4e-2e3b-417b-a3b9-57f6a45abf94"/>
+				<textFieldExpression><![CDATA[$F{cliente_email}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement x="0" y="103" width="555" height="30" uuid="8d95a752-0bf0-4503-aa76-3ac72e0246eb"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "auditoria_auditores.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="135" width="555" height="30" uuid="fca4e67c-40ef-48ee-9fdc-9aaffe2d457d"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "auditoria_auditores.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="167" width="555" height="30" uuid="e4b14d26-a71b-4298-88cc-8d43b66b25e4"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "auditoria_auditores.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="0" y="199" width="555" height="30" uuid="e13e3f51-a742-4b41-a838-d97b2a5c2a9a"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "auditoria_auditores.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
-	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
 	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
-	<detail>
-		<band height="125" splitType="Stretch"/>
-	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="29" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="6" width="555" height="1" uuid="a86146cc-2460-4db9-8362-2e35a2d3656f"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="7" width="269" height="15" uuid="5e36f0b6-fb3b-4177-9d3a-ca7708fe93c8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Criciúma, "]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy">
+				<reportElement x="269" y="7" width="286" height="15" uuid="6ca29732-5a08-4b1a-9d64-235b1490687d"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
 	</summary>
 </jasperReport>
