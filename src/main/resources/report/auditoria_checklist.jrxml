@@ -1,33 +1,87 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="auditoria_auditores" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e3d26c60-b333-46bb-a8fa-eb800bda25dc">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[select * from auditores]]>
+	<queryString>
+		<![CDATA[select 
+idpontoctrl as numero,
+docprocesso as documento_processo,
+dthrrealichklist as data_hora_realizacao,
+descrichklist as descricao,
+obschklist as observacao
+from checklist]]>
 	</queryString>
+	<field name="numero" class="java.lang.Integer"/>
+	<field name="documento_processo" class="java.lang.String"/>
+	<field name="data_hora_realizacao" class="java.sql.Timestamp"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="observacao" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="4" width="555" height="22" uuid="626c8748-0f70-465d-905b-eedcf9c7c548"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[CHECKLIST]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="0" width="125" height="15" uuid="c013f3d2-5140-4a49-802d-8817685190a9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check Point Número:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="137" y="0" width="100" height="15" uuid="c69160df-bf5b-4415-8e29-b39fe18530d2"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="15" width="125" height="15" uuid="2be72c29-d60b-4b5e-871c-2f5ca7d93ae8"/>
+				<text><![CDATA[Documento Processo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="137" y="15" width="100" height="15" uuid="2a2507e1-6cfb-4777-bd20-0e2f806d621c"/>
+				<textFieldExpression><![CDATA[$F{documento_processo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="313" y="15" width="136" height="15" uuid="9b73c2d8-0993-48b8-866b-a37a5aca55f9"/>
+				<text><![CDATA[Data e hora da realização:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="450" y="15" width="114" height="15" uuid="b5f694e7-e4b9-45f6-80cb-11fac00f6c4f"/>
+				<textFieldExpression><![CDATA[$F{data_hora_realizacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="40" width="110" height="15" uuid="66e2f9ce-7ea6-4037-b112-8cbdb390e57b"/>
+				<text><![CDATA[Descrição:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="9" y="56" width="555" height="15" uuid="64b87f05-2254-4b24-887e-ae84e84170b0"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="9" y="79" width="110" height="15" uuid="e73ef409-38f2-4c3d-a33b-574da8f89f96"/>
+				<text><![CDATA[Observação:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="9" y="95" width="555" height="15" uuid="aad9fc55-3e7c-4bd2-80c7-80e90fc27f0b"/>
+				<textFieldExpression><![CDATA[$F{observacao}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="15"/>
 	</summary>
 </jasperReport>
