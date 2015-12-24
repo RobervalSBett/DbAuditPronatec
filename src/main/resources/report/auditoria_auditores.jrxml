@@ -17,9 +17,9 @@ from auditores]]>
 		<band splitType="Stretch"/>
 	</background>
 	<pageHeader>
-		<band height="22" splitType="Stretch">
+		<band height="30" splitType="Stretch">
 			<staticText>
-				<reportElement x="10" y="0" width="555" height="22" uuid="cd6e7d6e-6fe4-478f-a991-9db912aeaff4"/>
+				<reportElement x="10" y="4" width="555" height="22" uuid="cd6e7d6e-6fe4-478f-a991-9db912aeaff4"/>
 				<textElement textAlignment="Center">
 					<font size="14"/>
 				</textElement>
@@ -31,14 +31,23 @@ from auditores]]>
 		<band height="15" splitType="Stretch">
 			<staticText>
 				<reportElement x="10" y="0" width="263" height="15" uuid="052b8d09-f7d4-426d-adc9-0878a68a11ba"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Nome]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="273" y="0" width="140" height="15" uuid="9d55ccbb-7ff1-47f7-b312-9fc6a9387735"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[CPF]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="413" y="0" width="152" height="15" uuid="3cc10647-a62e-4b21-9268-3c8c6494f63f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
 				<text><![CDATA[Telefone]]></text>
 			</staticText>
 		</band>
@@ -59,4 +68,7 @@ from auditores]]>
 			</textField>
 		</band>
 	</detail>
+	<summary>
+		<band height="14"/>
+	</summary>
 </jasperReport>
