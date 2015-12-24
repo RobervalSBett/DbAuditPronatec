@@ -1,33 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="auditoria_nao_conformidades" language="groovy" pageWidth="572" pageHeight="752" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="e3d26c60-b333-46bb-a8fa-eb800bda25dc">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<queryString language="SQL">
-		<![CDATA[select * from auditores]]>
+	<queryString>
+		<![CDATA[select
+  idpontoctrl as numero,
+  descrinc as descricao,
+  sugestaonc as sugestao,
+  obsnc as observacao,
+  dtatualiza as data_hora_realizacao,
+  dtprevresolnc as data_hora_previsao_resolucao
+from naoconformidadeds]]>
 	</queryString>
+	<field name="numero" class="java.lang.Integer"/>
+	<field name="descricao" class="java.lang.String"/>
+	<field name="sugestao" class="java.lang.String"/>
+	<field name="observacao" class="java.lang.String"/>
+	<field name="data_hora_realizacao" class="java.sql.Timestamp"/>
+	<field name="data_hora_previsao_resolucao" class="java.sql.Timestamp"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
-	<title>
-		<band height="79" splitType="Stretch"/>
-	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="4" width="555" height="22" uuid="8eae5418-4955-4228-952d-e73a4c51ed50"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[NÃO CONFORMIDADES]]></text>
+			</staticText>
+		</band>
 	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="177" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="21" width="110" height="15" uuid="b3f4011a-4a1b-48d3-aeea-9b0c8396fd53"/>
+				<text><![CDATA[Descrição:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="0" width="125" height="15" uuid="e9b4167b-2d64-468e-80bc-ea5fccb295a9"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check Point Número:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="139" width="187" height="15" uuid="f41e0308-82ee-42c8-b0a4-e91d5e6c250f"/>
+				<text><![CDATA[Data e hora da realização:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="9" y="36" width="555" height="15" uuid="5ff8735b-7b7b-4e9f-849c-be5bddecfef1"/>
+				<textFieldExpression><![CDATA[$F{descricao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="9" y="59" width="110" height="15" uuid="490c609f-cb8d-451e-ac4a-908b8c61e3d7"/>
+				<text><![CDATA[Sugestão:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="9" y="74" width="555" height="15" uuid="8bae5450-2a6d-4391-bfd1-b2a325915c6e"/>
+				<textFieldExpression><![CDATA[$F{sugestao}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="9" y="113" width="555" height="15" uuid="187c8781-0206-4525-828b-5d187131b9c4"/>
+				<textFieldExpression><![CDATA[$F{observacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="9" y="98" width="110" height="15" uuid="399987a7-c2ac-42c8-93f5-a44508f439c0"/>
+				<text><![CDATA[Observação:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="198" y="139" width="132" height="15" uuid="ab6925f8-21b8-409f-8cea-d47e5b563c1e"/>
+				<textFieldExpression><![CDATA[$F{data_hora_realizacao}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="154" width="187" height="15" uuid="c6507ebf-ea8b-405a-880d-ce8e0e082873"/>
+				<text><![CDATA[Data e hora prevista para resolução:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement x="198" y="154" width="132" height="15" uuid="3763f6cb-b2c1-400a-85ec-59b37257bdef"/>
+				<textFieldExpression><![CDATA[$F{data_hora_realizacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="0" width="100" height="15" uuid="37057b43-2035-464c-8683-448f1d3a0a86"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
-		<band height="42" splitType="Stretch"/>
+		<band height="15"/>
 	</summary>
 </jasperReport>
