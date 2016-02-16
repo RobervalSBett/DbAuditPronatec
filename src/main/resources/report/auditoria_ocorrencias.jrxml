@@ -3,6 +3,9 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="idAuditoria" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[select
   idpontoctrl as numero,
@@ -10,7 +13,9 @@
   sugesocorre as sugestao,
   obsocorre as observacao,
   dthrocorre as data_hora_ocorrencia
-from ocorrencias]]>
+from ocorrencias where idpontoctrl in (
+  select idpontoctrl from checklist where idaudit = $P{idAuditoria}
+)]]>
 	</queryString>
 	<field name="numero" class="java.lang.Integer"/>
 	<field name="descricao" class="java.lang.String"/>

@@ -3,12 +3,15 @@
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<parameter name="idAuditoria" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[select
-  nomeaudit as nome,
-  cpfaudit as cpf,
-  fone1audit as telefone
-from auditores]]>
+  a.nomeaudit as nome,
+  a.cpfaudit as cpf,
+  a.fone1audit as telefone
+from equipeauditores ea
+join auditores a on (a.idauditor = ea.idauditor)
+where idaudit = $P{idAuditoria}]]>
 	</queryString>
 	<field name="nome" class="java.lang.String"/>
 	<field name="cpf" class="java.lang.String"/>
